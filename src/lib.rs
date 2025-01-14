@@ -34,16 +34,17 @@ pub fn derive_assert_offsets(input: TokenStream) -> TokenStream {
         }
 
         if let Some(expected_offset) = expected_offset {
+            let expected_offset_hex = format!("0x{:X}", expected_offset);
             assertions.push(quote! {
                 const _: () = assert!(
                     std::mem::offset_of!(#struct_name, #field_name) == #expected_offset,
                     concat!(
-                        "Offset of field ",
+                        "Field `",
                         stringify!(#struct_name),
                         "::",
                         stringify!(#field_name),
-                        " is not equal to the expected offset ",
-                        stringify!(#expected_offset)
+                        "` is not at expected offset ",
+                        #expected_offset_hex
                     )
                 );
             });

@@ -1,6 +1,6 @@
 [package]
 name = "assert-offset"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
 description = "Derive macro for asserting the memory offset of fields in a struct."
 repository = "https://github.com/cohaereo/assert-offset"

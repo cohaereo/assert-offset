@@ -2,6 +2,9 @@
 name = "assert-offset"
 version = "0.1.0"
 edition = "2021"
+description = "Derive macro for asserting the memory offset of fields in a struct."
+repository = "https://github.com/cohaereo/assert-offset"
+license = "MIT"
 
 [lib]
 proc-macro = true

@@ -2,6 +2,7 @@ use proc_macro::TokenStream;
 use quote::quote;
 use syn::{parse_macro_input, Data, DeriveInput, Fields, Lit};
 
+
 #[proc_macro_derive(AssertOffsets, attributes(offset))]
 pub fn derive_assert_offsets(input: TokenStream) -> TokenStream {
     let input = parse_macro_input!(input as DeriveInput);
@@ -37,7 +38,7 @@ pub fn derive_assert_offsets(input: TokenStream) -> TokenStream {
             let expected_offset_hex = format!("0x{:X}", expected_offset);
             assertions.push(quote! {
                 const _: () = assert!(
-                    std::mem::offset_of!(#struct_name, #field_name) == #expected_offset,
+                    core::mem::offset_of!(#struct_name, #field_name) == #expected_offset,
                     concat!(
                         "Field `",
                         stringify!(#struct_name),
